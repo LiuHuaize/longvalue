@@ -15,7 +15,7 @@ const BitcoinPriceCard: React.FC<BitcoinPriceCardProps> = ({
   unit,
   borderColor,
   textColor,
-  isLoading = true
+  isLoading = false
 }) => {
   return (
     <div className={`bg-white p-8 rounded-2xl shadow-xl border border-blue-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 ${borderColor} border-l-4`}>

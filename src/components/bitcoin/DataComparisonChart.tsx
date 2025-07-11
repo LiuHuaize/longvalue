@@ -68,6 +68,10 @@ const DataComparisonChart: React.FC<DataComparisonChartProps> = ({
       } catch (err) {
         console.error('获取图表数据失败:', err);
         setError(err instanceof Error ? err.message : '数据获取失败');
+        
+        // 即使获取失败，也清除loading状态
+        setIsLoading(false);
+        return;
       } finally {
         setIsLoading(false);
       }

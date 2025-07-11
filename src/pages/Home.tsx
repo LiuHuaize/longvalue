@@ -1,59 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import BitcoinDataGrid from '../components/bitcoin/BitcoinDataGrid';
+import React from 'react';
+import SimpleBitcoinDisplay from '../components/bitcoin/SimpleBitcoinDisplay';
 import DataComparisonChart from '../components/bitcoin/DataComparisonChart';
 import SupplyComparisonChart from '../components/bitcoin/SupplyComparisonChart';
-import { simpleBitcoinService, formatPrice, formatPercentage, formatMarketCap } from '../services/simpleBitcoinService';
 
 const Home = () => {
-  const [bitcoinData, setBitcoinData] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<string>('');
-
-  const fetchBitcoinData = async () => {
-    try {
-      setIsLoading(true);
-      console.log('🏠 首页获取比特币数据...');
-
-      // 获取比特币当前价格和回报率数据
-      const [priceData, returnsData] = await Promise.all([
-        simpleBitcoinService.getCurrentData(),
-        simpleBitcoinService.getReturnsData()
-      ]);
-
-      const formattedBitcoinData = {
-        price: formatPrice(priceData.price),
-        threeMonthReturn: formatPercentage(returnsData.threeMonthReturn),
-        oneYearReturn: formatPercentage(returnsData.oneYearReturn),
-        tenYearReturn: formatPercentage(returnsData.tenYearReturn),
-        marketCap: formatMarketCap(priceData.marketCap)
-      };
-
-      setBitcoinData(formattedBitcoinData);
-      setLastUpdated(new Date().toLocaleTimeString('zh-CN'));
-      console.log('✅ 首页比特币数据获取成功');
-    } catch (error) {
-      console.error('❌ 首页比特币数据获取失败:', error);
-      // 设置默认数据以防止显示空白
-      setBitcoinData({
-        price: '$--,---',
-        threeMonthReturn: '--%',
-        oneYearReturn: '--%',
-        tenYearReturn: '--%',
-        marketCap: '$-.-T'
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleRefresh = () => {
-    console.log('🔄 手动刷新比特币数据...');
-    fetchBitcoinData();
-  };
-
-  useEffect(() => {
-    fetchBitcoinData();
-  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,43 +69,7 @@ const Home = () => {
 
           {/* Bitcoin Real-time Data Section */}
           <div className="mb-20">
-            <div className="flex justify-between items-center mb-10">
-              <h3 className="text-3xl font-bold text-gray-900">比特币实时数据</h3>
-              <div className="flex items-center space-x-4">
-                {lastUpdated && (
-                  <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                    最后更新: {lastUpdated}
-                  </span>
-                )}
-                <button
-                  onClick={handleRefresh}
-                  disabled={isLoading}
-                  className={`
-                    flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300
-                    ${isLoading
-                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                      : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg active:transform active:scale-95'
-                    }
-                  `}
-                >
-                  <svg
-                    className={`w-5 h-5 ${isLoading ? 'animate-spin' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                  <span>{isLoading ? '刷新中...' : '刷新数据'}</span>
-                </button>
-              </div>
-            </div>
-            <BitcoinDataGrid data={bitcoinData} isLoading={isLoading} />
+            <SimpleBitcoinDisplay />
           </div>
 
           {/* Bitcoin Data Comparison Charts */}

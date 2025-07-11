@@ -16,7 +16,7 @@ interface BitcoinDataGridProps {
 
 const BitcoinDataGrid: React.FC<BitcoinDataGridProps> = ({
   data,
-  isLoading = true
+  isLoading = false
 }) => {
   const defaultData = {
     price: '$--,---',
