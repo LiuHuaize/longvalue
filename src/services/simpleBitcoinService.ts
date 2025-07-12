@@ -62,16 +62,22 @@ class SimpleBitcoinService {
     // if (cached) return cached;
 
     try {
-      console.log('₿ 通过代理服务获取比特币当前数据...');
+      console.log('₿ [SimpleBitcoinService] 获取比特币当前数据...');
+      console.log('🔗 [SimpleBitcoinService] 使用代理服务器:', proxyDataService);
 
       // 首先检查代理服务是否可用
+      console.log('🔍 [SimpleBitcoinService] 检查代理服务器健康状态...');
       const isServerHealthy = await proxyDataService.checkServerHealth();
+      console.log('📊 [SimpleBitcoinService] 代理服务器健康状态:', isServerHealthy);
+      
       if (!isServerHealthy) {
         throw new Error('代理服务器不可用');
       }
 
       // 通过代理服务获取比特币价格
+      console.log('💰 [SimpleBitcoinService] 调用代理服务获取比特币价格...');
       const priceData = await proxyDataService.fetchCurrentBitcoinPrice();
+      console.log('📈 [SimpleBitcoinService] 获取到的价格数据:', priceData);
 
       // 估算市值和供应量（使用已知数据）
       const circulatingSupply = 19800000; // 大约的流通供应量
@@ -89,11 +95,12 @@ class SimpleBitcoinService {
         lastUpdated: new Date(priceData.last_updated_at * 1000).toISOString()
       };
 
-      console.log('✅ 成功获取比特币当前数据');
+      console.log('✅ [SimpleBitcoinService] 成功获取比特币当前数据:', bitcoinData);
       this.setCachedData(cacheKey, bitcoinData, 60); // 缓存1小时
       return bitcoinData;
     } catch (error) {
-      console.error('❌ 获取比特币数据失败，使用模拟数据:', error);
+      console.error('❌ [SimpleBitcoinService] 获取比特币数据失败，使用模拟数据:', error);
+      console.error('🚨 [SimpleBitcoinService] 错误详情:', error.message);
       // 返回模拟数据
       return this.getMockCurrentData();
     }
@@ -109,10 +116,12 @@ class SimpleBitcoinService {
     // if (cached) return cached;
 
     try {
-      console.log('📈 通过代理服务获取比特币历史数据...');
+      console.log('📈 [SimpleBitcoinService] 获取比特币历史数据...');
 
       // 通过代理服务获取历史数据
+      console.log('🔍 [SimpleBitcoinService] 调用代理服务获取365天历史数据...');
       const historyData = await proxyDataService.fetchBitcoinHistory('365');
+      console.log('📊 [SimpleBitcoinService] 获取到的历史数据长度:', historyData?.length);
 
       if (!historyData || historyData.length === 0) {
         throw new Error('历史数据为空');
@@ -129,11 +138,12 @@ class SimpleBitcoinService {
         allTimeLow: 0.0008
       };
 
-      console.log('✅ 成功计算历史回报率');
+      console.log('✅ [SimpleBitcoinService] 成功计算历史回报率:', returnsData);
       this.setCachedData(cacheKey, returnsData, 360); // 缓存6小时
       return returnsData;
     } catch (error) {
-      console.error('❌ 获取历史回报率失败，使用模拟数据:', error);
+      console.error('❌ [SimpleBitcoinService] 获取历史回报率失败，使用模拟数据:', error);
+      console.error('🚨 [SimpleBitcoinService] 错误详情:', error.message);
       // 返回模拟数据
       return this.getMockReturnsData();
     }

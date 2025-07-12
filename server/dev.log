@@ -1,0 +1,372 @@
+
+> longvaluehk-data-server@1.0.0 dev /root/longvalue/server
+> nodemon server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+🚀 LongValueHK数据服务器运行在端口 3001
+📊 健康检查: http://localhost:3001/health
+🏦 FRED M2数据: http://localhost:3001/api/fred/m2
+₿ 比特币价格: http://localhost:3001/api/bitcoin/price
+📈 比特币历史: http://localhost:3001/api/bitcoin/history
+📰 最新新闻: http://localhost:3001/api/news/latest
+📂 新闻分类: http://localhost:3001/api/news/categories
+📋 新闻源: http://localhost:3001/api/news/sources
+⏰ 新闻定时刷新已启动，每6小时自动更新
+₿ 获取比特币价格数据...
+⚠️ CoinGecko不可用，尝试Coinbase API...
+❌ 所有API都失败，返回模拟数据: FetchError: request to https://api.coinbase.com/v2/exchange-rates?currency=BTC failed, reason: connect ECONNREFUSED 162.220.12.226:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ECONNREFUSED',
+  code: 'ECONNREFUSED',
+  erroredSysCall: 'connect'
+}
+₿ 获取比特币价格数据...
+⚠️ CoinGecko不可用，尝试Coinbase API...
+❌ 所有API都失败，返回模拟数据: FetchError: request to https://api.coinbase.com/v2/exchange-rates?currency=BTC failed, reason: connect ECONNREFUSED 162.220.12.226:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ECONNREFUSED',
+  code: 'ECONNREFUSED',
+  erroredSysCall: 'connect'
+}
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+📰 获取最新新闻数据...
+📰 开始获取所有新闻源...
+📰 获取CoinDesk新闻...
+📰 获取CoinTelegraph新闻...
+📰 获取Bitcoin Magazine新闻...
+📰 获取Decrypt新闻...
+✅ 成功获取Decrypt新闻 5条
+✅ 成功获取Bitcoin Magazine新闻 5条
+✅ 成功获取CoinTelegraph新闻 5条
+❌ 获取CoinDesk新闻失败: Request timed out after 10000ms
+✅ 总共获取新闻 15 条
+⚠️ CoinGecko不可用，尝试Coinbase API...
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 67.228.235.93:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 所有API都失败，返回模拟数据: FetchError: request to https://api.coinbase.com/v2/exchange-rates?currency=BTC failed, reason: connect ETIMEDOUT 2606:4700:4400::6812:230f:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+🚀 LongValueHK数据服务器运行在端口 3001
+📊 健康检查: http://localhost:3001/health
+🏦 FRED M2数据: http://localhost:3001/api/fred/m2
+₿ 比特币价格: http://localhost:3001/api/bitcoin/price
+📈 比特币历史: http://localhost:3001/api/bitcoin/history
+📰 最新新闻: http://localhost:3001/api/news/latest
+📂 新闻分类: http://localhost:3001/api/news/categories
+📋 新闻源: http://localhost:3001/api/news/sources
+⏰ 新闻定时刷新已启动，每6小时自动更新
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+📈 获取比特币历史数据...
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 199.16.158.182:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 199.59.150.43:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 74.86.228.110:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+📊 获取Bitcoin vs M2图表数据...
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+✅ 成功获取 0 个M2数据点
+✅ 成功获取 161 个M2数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 104.244.46.211:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 104.244.46.211:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 104.244.46.211:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+✅ 成功获取组合图表数据
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+📊 获取Bitcoin vs M2图表数据...
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+✅ 成功获取 0 个M2数据点
+📈 获取比特币历史数据...
+📈 获取比特币历史数据...
+📊 获取Bitcoin vs M2图表数据...
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+✅ 成功获取 0 个M2数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 74.86.12.172:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+✅ 成功获取组合图表数据
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 74.86.12.172:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 74.86.12.172:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 74.86.12.172:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+✅ 成功获取组合图表数据
+₿ 获取比特币价格数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+🕐 定时刷新新闻缓存...
+📰 开始获取所有新闻源...
+📰 获取CoinDesk新闻...
+📰 获取CoinTelegraph新闻...
+📰 获取Bitcoin Magazine新闻...
+📰 获取Decrypt新闻...
+✅ 成功获取Bitcoin Magazine新闻 5条
+✅ 成功获取Decrypt新闻 5条
+❌ 获取CoinDesk新闻失败: Request timed out after 10000ms
+❌ 获取CoinTelegraph新闻失败: Request timed out after 10000ms
+✅ 总共获取新闻 10 条
+✅ 定时刷新完成，获取 10 条新闻
+📈 获取比特币历史数据...
+₿ 获取比特币价格数据...
+📊 获取Bitcoin vs M2图表数据...
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+✅ 成功获取比特币价格数据 (Blockchain.info)
+✅ 成功获取 0 个M2数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily failed, reason: connect ETIMEDOUT 50.87.93.246:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 50.87.93.246:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+✅ 成功获取组合图表数据
+📊 获取Bitcoin vs M2图表数据...
+📊 获取FRED M2数据...
+📈 获取比特币历史数据...
+✅ 成功获取 0 个M2数据点
+❌ 获取比特币历史数据失败，返回模拟数据: FetchError: request to https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily failed, reason: connect ETIMEDOUT 50.87.93.246:443
+    at ClientRequest.<anonymous> (file:///root/longvalue/node_modules/.pnpm/node-fetch@3.3.2/node_modules/node-fetch/src/index.js:108:11)
+    at ClientRequest.emit (node:events:517:28)
+    at TLSSocket.socketErrorListener (node:_http_client:501:9)
+    at TLSSocket.emit (node:events:517:28)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  type: 'system',
+  errno: 'ETIMEDOUT',
+  code: 'ETIMEDOUT',
+  erroredSysCall: 'connect'
+}
+✅ 生成了 366 个模拟历史价格数据点
+✅ 成功获取组合图表数据
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+🚀 LongValueHK数据服务器运行在端口 3001
+📊 健康检查: http://localhost:3001/health
+🏦 FRED M2数据: http://localhost:3001/api/fred/m2
+₿ 比特币价格: http://localhost:3001/api/bitcoin/price
+📈 比特币历史: http://localhost:3001/api/bitcoin/history
+📰 最新新闻: http://localhost:3001/api/news/latest
+📂 新闻分类: http://localhost:3001/api/news/categories
+📋 新闻源: http://localhost:3001/api/news/sources
+⏰ 新闻定时刷新已启动，每6小时自动更新
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+🚀 LongValueHK数据服务器运行在端口 3001
+📊 健康检查: http://localhost:3001/health
+🏦 FRED M2数据: http://localhost:3001/api/fred/m2
+₿ 比特币价格: http://localhost:3001/api/bitcoin/price
+📈 比特币历史: http://localhost:3001/api/bitcoin/history
+📰 最新新闻: http://localhost:3001/api/news/latest
+📂 新闻分类: http://localhost:3001/api/news/categories
+📋 新闻源: http://localhost:3001/api/news/sources
+⏰ 新闻定时刷新已启动，每6小时自动更新
+ ELIFECYCLE  Command failed with exit code 143.

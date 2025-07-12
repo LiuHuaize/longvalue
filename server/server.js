@@ -109,7 +109,17 @@ app.get('/api/bitcoin/price', async (req, res) => {
     // 首先尝试 Blockchain.info API (免费，无需密钥)
     try {
       const blockchainUrl = 'https://api.blockchain.info/ticker';
-      const blockchainResponse = await fetch(blockchainUrl, { timeout: 10000 });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      
+      const blockchainResponse = await fetch(blockchainUrl, { 
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'LongValueHK-DataBot/1.0'
+        }
+      });
+      
+      clearTimeout(timeoutId);
 
       if (blockchainResponse.ok) {
         const blockchainData = await blockchainResponse.json();
@@ -144,7 +154,17 @@ app.get('/api/bitcoin/price', async (req, res) => {
       const baseUrl = process.env.COINGECKO_BASE_URL || 'https://api.coingecko.com/api/v3';
       const url = `${baseUrl}/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`;
 
-      const response = await fetch(url, { timeout: 10000 });
+      const controller2 = new AbortController();
+      const timeoutId2 = setTimeout(() => controller2.abort(), 10000);
+      
+      const response = await fetch(url, { 
+        signal: controller2.signal,
+        headers: {
+          'User-Agent': 'LongValueHK-DataBot/1.0'
+        }
+      });
+      
+      clearTimeout(timeoutId2);
 
       if (response.ok) {
         const data = await response.json();
@@ -164,7 +184,17 @@ app.get('/api/bitcoin/price', async (req, res) => {
     // 备用2：使用Coinbase API
     try {
       const coinbaseUrl = 'https://api.coinbase.com/v2/exchange-rates?currency=BTC';
-      const coinbaseResponse = await fetch(coinbaseUrl, { timeout: 10000 });
+      const controller3 = new AbortController();
+      const timeoutId3 = setTimeout(() => controller3.abort(), 10000);
+      
+      const coinbaseResponse = await fetch(coinbaseUrl, { 
+        signal: controller3.signal,
+        headers: {
+          'User-Agent': 'LongValueHK-DataBot/1.0'
+        }
+      });
+      
+      clearTimeout(timeoutId3);
 
       if (coinbaseResponse.ok) {
         const coinbaseData = await coinbaseResponse.json();

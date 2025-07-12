@@ -143,27 +143,16 @@ class ChartDataService {
   }
 
   /**
-   * 图表1: Bitcoin vs Major M2 (使用实时数据)
+   * 图表1: Bitcoin vs Major M2 (使用固定历史数据)
    */
   async getBitcoinVsM2Data(): Promise<BitcoinVsM2Data> {
     console.log('📊 获取Bitcoin vs M2数据...');
 
-    try {
-      // 优先使用代理服务获取真实数据
-      const realTimeData = await this.getRealTimeBitcoinVsM2DataViaProxy();
-      console.log('✅ 成功获取真实数据（通过代理服务）');
-      return realTimeData;
-    } catch (error) {
-      console.log('❌ 代理服务获取失败，尝试直接API调用:', error);
-      try {
-        const realTimeData = await this.getRealTimeBitcoinVsM2Data();
-        console.log('✅ 成功获取实时数据（直接API）');
-        return realTimeData;
-      } catch (directError) {
-        console.log('❌ 直接API调用也失败，使用模拟数据:', directError);
-        return this.getMockBitcoinVsM2Data();
-      }
-    }
+    // 直接使用历史数据，不再获取实时数据
+    const historicalData = await this.loadHistoricalBitcoinM2Data();
+    console.log('✅ 使用固定的Bitcoin vs M2历史数据，包含', historicalData.data.length, '个数据点');
+    
+    return historicalData;
   }
 
   /**
@@ -493,7 +482,7 @@ class ChartDataService {
    */
   private async getRealTimeBitcoinVsM2Data(): Promise<BitcoinVsM2Data> {
     const { fredDataService } = await import('./fredDataService');
-    const bitcoinHistoryService = new (await import('./bitcoinHistoryService')).BitcoinHistoryService();
+    const { bitcoinHistoryService } = await import('./bitcoinHistoryService');
 
     // 计算日期范围：从2012年1月到当前月份
     const startDate = '2012-01-01';

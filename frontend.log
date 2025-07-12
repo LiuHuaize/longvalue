@@ -1,0 +1,17 @@
+
+> react_repo@0.0.0 dev /root/longvalue
+> vite
+
+
+  VITE v6.3.5  ready in 279 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://10.1.12.17:5173/
+  ➜  Network: http://172.17.0.1:5173/
+8:39:15 PM [vite] (client) hmr update /src/components/bitcoin/BitcoinPriceCard.tsx, /src/index.css
+8:39:36 PM [vite] (client) hmr update /src/components/bitcoin/BitcoinDataGrid.tsx, /src/index.css
+8:40:34 PM [vite] (client) hmr update /src/components/bitcoin/DataComparisonChart.tsx, /src/index.css
+8:59:54 PM [vite] (client) hmr update /src/pages/Home.tsx, /src/index.css
+9:00:15 PM [vite] (client) hmr update /src/pages/Home.tsx, /src/index.css
+9:00:32 PM [vite] (client) hmr update /src/pages/Home.tsx, /src/index.css
+ ELIFECYCLE  Command failed with exit code 143.

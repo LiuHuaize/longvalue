@@ -1,0 +1,28 @@
+[Unit]
+Description=LongValue Backend API Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/longvalue/server
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+Environment=PORT=3002
+
+# Logging
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=longvalue-backend
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/root/longvalue/server
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

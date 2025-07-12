@@ -8,15 +8,20 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
+      <section className="text-white py-24 relative overflow-hidden" style={{
+        backgroundImage: 'url(/背景图.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="absolute inset-0 bg-black/10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="mb-12">
               <img
-                src="/calligraphy.png"
+                src="/长丰数智.png"
                 alt="长丰数智书法字体"
-                className="h-48 w-auto mx-auto drop-shadow-2xl"
+                className="h-48 w-auto mx-auto drop-shadow-2xl filter drop-shadow-xl"
               />
             </div>
             <p className="text-2xl md:text-3xl mb-12 text-white/95 font-light tracking-wide">打造亚洲首家比特币银行</p>
@@ -64,7 +69,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">比特币布道</h2>
-            <p className="text-2xl text-blue-600 font-medium">用数字说明真理，用言语启发智慧</p>
+            <p className="text-2xl text-blue-600 font-medium">数字世界的力量，只有数字知道。</p>
           </div>
 
           {/* Bitcoin Real-time Data Section */}

@@ -45,8 +45,23 @@ export class ProxyDataService {
   private serverBaseUrl: string;
 
   constructor() {
-    // 本地后端服务器地址
-    this.serverBaseUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+    // 检测当前环境决定服务器地址
+    const isDev = import.meta.env.DEV;
+    const customUrl = import.meta.env.VITE_SERVER_URL;
+    
+    if (customUrl) {
+      this.serverBaseUrl = customUrl;
+    } else if (isDev) {
+      // 开发环境直接访问3001端口
+      this.serverBaseUrl = 'http://localhost:3001';
+    } else {
+      // 生产环境使用相对路径，通过nginx代理
+      this.serverBaseUrl = '';
+    }
+    
+    console.log('🏗️ [ProxyDataService] 初始化，服务器地址:', this.serverBaseUrl);
+    console.log('🔧 [ProxyDataService] 开发模式:', isDev);
+    console.log('🔧 [ProxyDataService] 环境变量 VITE_SERVER_URL:', import.meta.env.VITE_SERVER_URL);
   }
 
   /**
@@ -88,27 +103,74 @@ export class ProxyDataService {
    */
   async fetchCurrentBitcoinPrice(): Promise<BitcoinCurrentPrice> {
     try {
-      console.log('₿ 通过代理获取比特币当前价格...');
+      console.log('₿ [ProxyDataService] 通过代理获取比特币当前价格...');
       
       const url = `${this.serverBaseUrl}/api/bitcoin/price`;
+      console.log('🌐 [ProxyDataService] 请求URL:', url);
       
-      const response = await fetch(url);
+      // 创建AbortController用于超时控制
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        console.log('⏰ [ProxyDataService] 请求超时，取消请求');
+        controller.abort();
+      }, 10000); // 10秒超时
+      
+      console.log('📡 [ProxyDataService] 发送请求...');
+      console.log('🕐 [ProxyDataService] 开始时间:', new Date().toISOString());
+      
+      const startTime = Date.now();
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors',
+        credentials: 'omit'
+      });
+      
+      clearTimeout(timeoutId);
+      const endTime = Date.now();
+      
+      console.log('📨 [ProxyDataService] 响应状态:', response.status, response.statusText);
+      console.log('⏱️ [ProxyDataService] 请求耗时:', endTime - startTime, 'ms');
+      console.log('🕐 [ProxyDataService] 响应时间:', new Date().toISOString());
       
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('❌ [ProxyDataService] 错误响应内容:', errorText);
         throw new Error(`代理服务器错误: ${response.status} ${response.statusText}`);
       }
       
+      console.log('📋 [ProxyDataService] 开始解析JSON...');
       const result: ProxyAPIResponse<BitcoinCurrentPrice> = await response.json();
+      console.log('📦 [ProxyDataService] 响应数据:', result);
       
       if (!result.success) {
         throw new Error(result.error || '获取比特币价格失败');
       }
       
-      console.log('✅ 成功获取比特币当前价格');
+      console.log('✅ [ProxyDataService] 成功获取比特币当前价格');
       return result.data;
       
     } catch (error) {
-      console.error('❌ 代理获取比特币价格失败:', error);
+      console.error('❌ [ProxyDataService] 代理获取比特币价格失败:', error);
+      console.error('🚨 [ProxyDataService] 错误类型:', error.constructor.name);
+      console.error('🚨 [ProxyDataService] 错误消息:', error.message);
+      
+      if (error.name === 'AbortError') {
+        console.error('⏰ [ProxyDataService] 请求被取消（超时）');
+        throw new Error('请求超时，请检查网络连接');
+      }
+      
+      if (error instanceof TypeError) {
+        console.error('🌐 [ProxyDataService] 网络错误，可能是连接问题');
+        console.error('🔍 [ProxyDataService] 建议检查：');
+        console.error('   - 后端服务器是否运行在', this.serverBaseUrl);
+        console.error('   - 网络连接是否正常');
+        console.error('   - CORS配置是否正确');
+      }
+      
       throw error;
     }
   }
@@ -192,10 +254,21 @@ export class ProxyDataService {
    */
   async checkServerHealth(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.serverBaseUrl}/health`);
+      const healthUrl = `${this.serverBaseUrl}/health`;
+      console.log('🔍 [ProxyDataService] 检查服务器健康状态:', healthUrl);
+      
+      const response = await fetch(healthUrl);
+      console.log('📊 [ProxyDataService] 健康检查响应:', response.status, response.statusText);
+      
+      if (response.ok) {
+        const healthData = await response.json();
+        console.log('💚 [ProxyDataService] 服务器健康状态:', healthData);
+      }
+      
       return response.ok;
     } catch (error) {
-      console.error('❌ 代理服务器不可用:', error);
+      console.error('❌ [ProxyDataService] 代理服务器不可用:', error);
+      console.error('🚨 [ProxyDataService] 健康检查错误:', error.message);
       return false;
     }
   }

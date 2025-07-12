@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server:install": "cd server && npm install",
-    "server:dev": "cd server && npm run dev",
-    "server:start": "cd server && npm start",
-    "server:test": "cd server && npm test",
-    "dev:full": "concurrently \"npm run server:dev\" \"npm run dev\"",
-    "setup": "npm install && npm run server:install"
+    "server:install": "cd server && pnpm install",
+    "server:dev": "cd server && pnpm run dev",
+    "server:start": "cd server && pnpm start",
+    "server:test": "cd server && pnpm test",
+    "dev:full": "concurrently \"pnpm run server:dev\" \"pnpm run dev\"",
+    "setup": "pnpm install && pnpm run server:install"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
